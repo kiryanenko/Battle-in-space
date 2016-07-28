@@ -375,8 +375,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e23d839eee3d00d4ea14f0b96bcdb002, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 1
-  isEnemy: 1
 --- !u!1 &475456576 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 158194, guid: 8cc5b6b14ba57244b8bfe04533bb8d21, type: 2}
@@ -396,8 +394,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e23d839eee3d00d4ea14f0b96bcdb002, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 1
-  isEnemy: 1
 --- !u!1 &601209118
 GameObject:
   m_ObjectHideFlags: 0
@@ -479,8 +475,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e23d839eee3d00d4ea14f0b96bcdb002, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 1
-  isEnemy: 1
 --- !u!1 &670296999 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 158194, guid: 8cc5b6b14ba57244b8bfe04533bb8d21, type: 2}
@@ -500,8 +494,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e23d839eee3d00d4ea14f0b96bcdb002, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 1
-  isEnemy: 1
 --- !u!1 &745379977 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 158194, guid: 8cc5b6b14ba57244b8bfe04533bb8d21, type: 2}
@@ -521,8 +513,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e23d839eee3d00d4ea14f0b96bcdb002, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 1
-  isEnemy: 1
 --- !u!1 &800068564 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 158194, guid: 8cc5b6b14ba57244b8bfe04533bb8d21, type: 2}
@@ -538,8 +528,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e23d839eee3d00d4ea14f0b96bcdb002, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 1
-  isEnemy: 1
 --- !u!1001 &908919227
 Prefab:
   m_ObjectHideFlags: 0
@@ -799,8 +787,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e23d839eee3d00d4ea14f0b96bcdb002, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 1
-  isEnemy: 1
 --- !u!1001 &1515006364
 Prefab:
   m_ObjectHideFlags: 0
@@ -909,7 +895,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxTraction: 10
-  torque: 1
+  torque: 100
   shipStrength: 1
   strength: 1
   numberOfEquipments: 1

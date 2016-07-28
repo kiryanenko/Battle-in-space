@@ -42,9 +42,10 @@ public class ShipScript : MonoBehaviour {
 
 	// Возвращает разность между 2 углами в зависимости от направления
 	// Пременима для углов от 0 до 360
+    // Сейчас нигде не используется
 	public float DifferenceAngleWithWay(float sourceAngle, float targetAngle, bool isАnticlockwise)
 	{
-		if (isАnticlockwise && targetAngle > sourceAngle || !isАnticlockwise && targetAngle < sourceAngle)
+		if (isАnticlockwise && targetAngle >= sourceAngle || !isАnticlockwise && targetAngle <= sourceAngle)
 		{
 			return Mathf.Abs(targetAngle - sourceAngle);
 		}
@@ -71,18 +72,19 @@ public class ShipScript : MonoBehaviour {
         _rb.AddForce(_traction); // Придал импульс
 
 		float stopAngle = _inertia * _rb.angularVelocity * _rb.angularVelocity / (2 * torque);	// Угол через который вращение прекратится
-		bool isАnticlockwise = _rb.angularVelocity > 0;
+		bool isАnticlockwise = _rb.angularVelocity >= 0;
 		//stopAngle *= isАnticlockwise ? 1 : -1;
 		//stopAngle += transform.eulerAngles.z;
 		Debug.Log("_rb.angularVelocity " + _rb.angularVelocity);
 		Debug.Log("stopangle " + stopAngle);
 		Debug.Log(finalAngle);
 		Debug.Log("_rb.rotation " + transform.eulerAngles.z);
-		Debug.Log("DifferenceAngleWithWay " + DifferenceAngleWithWay(transform.eulerAngles.z, finalAngle, isАnticlockwise));
-		if (DifferenceAngleWithWay(transform.eulerAngles.z, finalAngle, isАnticlockwise) > stopAngle)
+        Debug.Log("DeltaAngle " + Mathf.DeltaAngle(transform.eulerAngles.z, finalAngle));
+		//Debug.Log("DifferenceAngleWithWay " + DifferenceAngleWithWay(transform.eulerAngles.z, finalAngle, isАnticlockwise));
+		if (Mathf.Abs(Mathf.DeltaAngle(transform.eulerAngles.z, finalAngle)) > stopAngle)
 		{
-			// ускоряем вращение
-			if (isАnticlockwise) _rb.AddTorque(torque);
+            // Поворачиваем в сторону finalAngle
+            if (Mathf.DeltaAngle(transform.eulerAngles.z, finalAngle) > 0) _rb.AddTorque(torque);
 			else _rb.AddTorque(-torque);
 		}
 		else
@@ -90,6 +92,7 @@ public class ShipScript : MonoBehaviour {
 			if (stopAngle < 3)
 			{
 				_rb.rotation = finalAngle;
+                _rb.angularVelocity = 0;
 			}
 			else
 			{
