@@ -8,7 +8,7 @@ public class ShipScript : MonoBehaviour {
     // Текущая тяга
     private Vector2 _traction;
     /// Крутящий момент
-    public int torque;
+    public float torque;
     // Прочность корабля
     public int shipStrength;
     // Текущая прочность
@@ -24,7 +24,7 @@ public class ShipScript : MonoBehaviour {
 
 	private Rigidbody2D _rb;
 	// момент инерции
-	private float _inertia;
+	private float _angleAcceleration;
 	// целевой угол поворота
 	public float finalAngle;
 
@@ -58,8 +58,8 @@ public class ShipScript : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		_rb = GetComponent<Rigidbody2D>();
-		_inertia = _rb.inertia;
 		finalAngle = _rb.rotation;
+		_angleAcceleration = torque / _rb.inertia * 180 / Mathf.PI;
 	}
 	
 	// Update is called once per frame
@@ -71,36 +71,44 @@ public class ShipScript : MonoBehaviour {
     {
         _rb.AddForce(_traction); // Придал импульс
 
-		float stopAngle = _inertia * _rb.angularVelocity * _rb.angularVelocity / (2 * torque);	// Угол через который вращение прекратится
-		bool isАnticlockwise = _rb.angularVelocity >= 0;
-		//stopAngle *= isАnticlockwise ? 1 : -1;
-		//stopAngle += transform.eulerAngles.z;
-		Debug.Log("_rb.angularVelocity " + _rb.angularVelocity);
-		Debug.Log("stopangle " + stopAngle);
-		Debug.Log(finalAngle);
-		Debug.Log("_rb.rotation " + transform.eulerAngles.z);
-        Debug.Log("DeltaAngle " + Mathf.DeltaAngle(transform.eulerAngles.z, finalAngle));
-		//Debug.Log("DifferenceAngleWithWay " + DifferenceAngleWithWay(transform.eulerAngles.z, finalAngle, isАnticlockwise));
-		if (Mathf.Abs(Mathf.DeltaAngle(transform.eulerAngles.z, finalAngle)) > stopAngle)
+        //////////////////////////// Маневрирование //////////////////////////////////////////////////////////////////////////
+        float angularVelocity = _rb.angularVelocity;
+		float dStopAngle = angularVelocity * angularVelocity / (2 * _angleAcceleration);	// Угол через который вращение прекратится
+        float deltaAngle = Mathf.DeltaAngle(transform.eulerAngles.z, finalAngle);
+
+		// Определяем время на полную остановку (см. рис "BIS - маневрирование2")
+		float time;
+		if (Mathf.Abs(deltaAngle) >= dStopAngle) time = Mathf.Sqrt(2 * Mathf.Abs(deltaAngle) / _angleAcceleration);
+		else time = angularVelocity / _angleAcceleration + 2 * Mathf.Sqrt((dStopAngle - Mathf.Abs(deltaAngle)) / _angleAcceleration);
+
+		if (time <= Time.fixedDeltaTime)	// Определяем не достигнем ли цели?
 		{
-            // Поворачиваем в сторону finalAngle
-            if (Mathf.DeltaAngle(transform.eulerAngles.z, finalAngle) > 0) _rb.AddTorque(torque);
-			else _rb.AddTorque(-torque);
+			// стопаем
+			_rb.rotation = finalAngle;
+			_rb.angularVelocity = 0;
+			_rb.AddTorque(0);
 		}
 		else
 		{
-			if (stopAngle < 3)
+			
+			if (Mathf.Abs(deltaAngle)  > dStopAngle)
 			{
-				_rb.rotation = finalAngle;
-                _rb.angularVelocity = 0;
+				// Поворачиваем в сторону finalAngle
+				if (deltaAngle > 0) _rb.AddTorque(torque);
+				else _rb.AddTorque(-torque);
 			}
 			else
 			{
 				// тормозим
-				if (isАnticlockwise) _rb.AddTorque(-torque);
+				if (angularVelocity >= 0) _rb.AddTorque(-torque);
 				else _rb.AddTorque(torque);
 			}
 		}
-		
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////////
     }
+
+	void OnCollisionEnter(Collision collision)
+	{
+
+	}
 }
