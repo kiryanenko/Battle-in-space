@@ -725,7 +725,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1305254913}
   m_Layer: 0
-  m_Name: 1 - Middleground
+  m_Name: 1 - GameArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -906,8 +906,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b87977f40ba543a4b9a6e932d675fb8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxTraction: 10
-  torque: 1
+  maxTraction: 1
+  torque: 0.2
   shipStrength: 1
   strength: 1
   numberOfEquipments: 1

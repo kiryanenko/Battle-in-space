@@ -11,7 +11,7 @@ public class CameraScript : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void LateUpdate () {
 		Vector3 pos = Ship.transform.position;
 		pos.z = transform.position.z;
 		transform.position = pos;
