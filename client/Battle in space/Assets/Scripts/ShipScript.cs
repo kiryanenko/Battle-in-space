@@ -76,7 +76,6 @@ public class ShipScript : MonoBehaviour {
 		}
 		if (deltaAngle > 0 && angularVelocity < 0 || deltaAngle < 0 && angularVelocity > 0) 
 			time += 2 * Mathf.Abs(angularVelocity) / _angleAcceleration;
-		Debug.Log("brakingTime" + brakingTime);
 		// Определяем не достигнем ли цели?
 		if (time <= Time.fixedDeltaTime || (brakingTime <= Time.fixedDeltaTime && time - brakingTime <= Time.fixedDeltaTime))	
 		{
