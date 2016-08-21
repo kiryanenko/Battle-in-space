@@ -28,10 +28,10 @@ public class ShipScript : MonoBehaviour {
 	// целевой угол поворота
 	public float finalAngle;
 
-    // Текущая тяга
+    // Текущая тяга в %
     public float Traction
     {
-        get { return _traction.y; }
+        get { return Mathf.Sqrt(_traction.x * _traction.x + _traction.y * _traction.y) / maxTraction; }
         set 
 		{
 			float angle = transform.eulerAngles.z * Mathf.PI / 180;
