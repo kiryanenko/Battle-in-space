@@ -27,6 +27,12 @@ public class ShipScript : MonoBehaviour {
 	private float _angleAcceleration;
 	// целевой угол поворота
 	public float finalAngle;
+    // Направление поворота 1 - налево, -1 - напрово, 0 - не поворачивается
+    public int courseOfManeuvering = 0;
+    // Максимальный угол крена (для анимации)
+    public float maxLurch;
+    // Скорость крена (для анимации)
+    public float speedOfLurch;
 
     // Текущая тяга в %
     public float Traction
@@ -55,6 +61,7 @@ public class ShipScript : MonoBehaviour {
 		}
 	}
 
+    // Функция определяет оптимальное напрвление в котрое нужно подавать крутящий момент
 	private void Maneuvering()
 	{
 		//////////////////////////// Маневрирование //////////////////////////////////////////////////////////////////////////
@@ -82,7 +89,7 @@ public class ShipScript : MonoBehaviour {
 			// стопаем
 			_rb.rotation = finalAngle;
 			_rb.angularVelocity = 0;
-			_rb.AddTorque(0);
+			courseOfManeuvering = 0;
 		}
 		else
 		{
@@ -99,21 +106,21 @@ public class ShipScript : MonoBehaviour {
 				_rb.rotation = finalAngle - dAngle;
 				_rb.angularVelocity = v;
 				// тормозим
-				if (v > 0) _rb.AddTorque(-torque);
-				else _rb.AddTorque(torque);
+                if (v > 0) courseOfManeuvering = -1;
+                else courseOfManeuvering = 1;
 			} 
 			else 
 				if (Mathf.Abs(deltaAngle) > dStopAngle)
 			{
 				// Поворачиваем в сторону finalAngle
-				if (deltaAngle > 0) _rb.AddTorque(torque);
-				else _rb.AddTorque(-torque);
+                if (deltaAngle > 0) courseOfManeuvering = 1;
+                else courseOfManeuvering = -1;
 			}
 			else
 			{
 				// тормозим
-				if (angularVelocity >= 0) _rb.AddTorque(-torque);
-				else _rb.AddTorque(torque);
+                if (angularVelocity >= 0) courseOfManeuvering = -1;
+                else courseOfManeuvering = 1;
 			}
 		}
 	}
@@ -127,13 +134,17 @@ public class ShipScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	 
+	    // Анимация маневрирования
+        float angle = Mathf.MoveTowardsAngle(transform.eulerAngles.y,
+            courseOfManeuvering * maxLurch, speedOfLurch * Time.deltaTime);
+        transform.eulerAngles = new Vector3(0, angle, _rb.rotation);
 	}
 
     void FixedUpdate()
     {
         _rb.AddForce(_traction); // Придал импульс
 		Maneuvering();
+        _rb.AddTorque(courseOfManeuvering * torque);
     }
 
 	void OnCollisionEnter(Collision collision)

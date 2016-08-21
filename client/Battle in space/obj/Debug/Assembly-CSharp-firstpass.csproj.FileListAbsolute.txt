@@ -19,3 +19,24 @@ C:\Users\Kirya_000\Documents\Unity\Battle in space\client\Battle in space\Temp\b
 C:\Users\Kirya_000\Documents\Unity\Battle in space\client\Battle in space\obj\Debug\Assembly-CSharp-firstpass.csprojResolveAssemblyReference.cache
 C:\Users\Kirya_000\Documents\Unity\Battle in space\client\Battle in space\obj\Debug\Assembly-CSharp-firstpass.dll
 C:\Users\Kirya_000\Documents\Unity\Battle in space\client\Battle in space\obj\Debug\Assembly-CSharp-firstpass.pdb
+C:\Users\Kirya\Documents\Unity\Battle-in-space\client\Battle in space\Temp\bin\Debug\Assembly-CSharp-firstpass.dll
+C:\Users\Kirya\Documents\Unity\Battle-in-space\client\Battle in space\Temp\bin\Debug\Assembly-CSharp-firstpass.pdb
+C:\Users\Kirya\Documents\Unity\Battle-in-space\client\Battle in space\Temp\bin\Debug\UnityEditor.dll
+C:\Users\Kirya\Documents\Unity\Battle-in-space\client\Battle in space\Temp\bin\Debug\UnityEngine.dll
+C:\Users\Kirya\Documents\Unity\Battle-in-space\client\Battle in space\Temp\bin\Debug\UnityEngine.Networking.dll
+C:\Users\Kirya\Documents\Unity\Battle-in-space\client\Battle in space\Temp\bin\Debug\UnityEngine.UI.dll
+C:\Users\Kirya\Documents\Unity\Battle-in-space\client\Battle in space\Temp\bin\Debug\Mono.Cecil.dll
+C:\Users\Kirya\Documents\Unity\Battle-in-space\client\Battle in space\Temp\bin\Debug\Unity.SerializationLogic.dll
+C:\Users\Kirya\Documents\Unity\Battle-in-space\client\Battle in space\Temp\bin\Debug\Unity.DataContract.dll
+C:\Users\Kirya\Documents\Unity\Battle-in-space\client\Battle in space\Temp\bin\Debug\ICSharpCode.NRefactory.dll
+C:\Users\Kirya\Documents\Unity\Battle-in-space\client\Battle in space\Temp\bin\Debug\Unity.UNetWeaver.dll
+C:\Users\Kirya\Documents\Unity\Battle-in-space\client\Battle in space\Temp\bin\Debug\Unity.CecilTools.dll
+C:\Users\Kirya\Documents\Unity\Battle-in-space\client\Battle in space\Temp\bin\Debug\Mono.Cecil.Pdb.dll
+C:\Users\Kirya\Documents\Unity\Battle-in-space\client\Battle in space\Temp\bin\Debug\Mono.Cecil.Mdb.dll
+C:\Users\Kirya\Documents\Unity\Battle-in-space\client\Battle in space\Temp\bin\Debug\UnityEngine.xml
+C:\Users\Kirya\Documents\Unity\Battle-in-space\client\Battle in space\Temp\bin\Debug\UnityEditor.xml
+C:\Users\Kirya\Documents\Unity\Battle-in-space\client\Battle in space\Temp\bin\Debug\UnityEngine.UI.xml
+C:\Users\Kirya\Documents\Unity\Battle-in-space\client\Battle in space\Temp\bin\Debug\UnityEngine.Networking.xml
+C:\Users\Kirya\Documents\Unity\Battle-in-space\client\Battle in space\obj\Debug\Assembly-CSharp-firstpass.csprojResolveAssemblyReference.cache
+C:\Users\Kirya\Documents\Unity\Battle-in-space\client\Battle in space\obj\Debug\Assembly-CSharp-firstpass.dll
+C:\Users\Kirya\Documents\Unity\Battle-in-space\client\Battle in space\obj\Debug\Assembly-CSharp-firstpass.pdb
