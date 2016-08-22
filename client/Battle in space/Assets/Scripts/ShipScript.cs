@@ -23,6 +23,7 @@ public class ShipScript : MonoBehaviour {
     public int numberOfTurrets;
 
 	private Rigidbody2D _rb;
+    private Transform _model;
 	// момент инерции
 	private float _angleAcceleration;
 	// целевой угол поворота
@@ -130,14 +131,15 @@ public class ShipScript : MonoBehaviour {
 		_rb = GetComponent<Rigidbody2D>();
 		finalAngle = _rb.rotation;
 		_angleAcceleration = torque / _rb.inertia * 180 / Mathf.PI;
+        _model = transform.Find("model");
 	}
 	
 	// Update is called once per frame
 	void Update () {
 	    // Анимация маневрирования
-        float angle = Mathf.MoveTowardsAngle(transform.eulerAngles.y,
+        float angle = Mathf.MoveTowardsAngle(_model.localEulerAngles.y,
             courseOfManeuvering * maxLurch, speedOfLurch * Time.deltaTime);
-        transform.eulerAngles = new Vector3(0, angle, _rb.rotation);
+        _model.localEulerAngles = new Vector3(0, angle, 0);
 	}
 
     void FixedUpdate()
