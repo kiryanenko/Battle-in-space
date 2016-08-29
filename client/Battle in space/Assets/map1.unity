@@ -4657,6 +4657,7 @@ GameObject:
   - 58: {fileID: 1597274269}
   - 114: {fileID: 1597274267}
   - 114: {fileID: 1597274271}
+  - 114: {fileID: 1597274270}
   m_Layer: 0
   m_Name: Ship
   m_TagString: Untagged
@@ -4720,6 +4721,17 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.4
+--- !u!114 &1597274270
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1597274265}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f054944af9373943becd1237e2d77b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1597274271
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6477,7 +6489,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 13c0055c89281314ba55d6666d26e683, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3f8ae9f3d296e00458b331ed5fa2ece6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -8401,6 +8413,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 2031461904}
+  - 114: {fileID: 2031461905}
   m_Layer: 0
   m_Name: Level
   m_TagString: Untagged
@@ -8424,6 +8437,19 @@ Transform:
   - {fileID: 1956804469}
   m_Father: {fileID: 0}
   m_RootOrder: 2
+--- !u!114 &2031461905
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2031461903}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce7e3c7ee1eb5b242a4bca8135e32456, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  size: 3072
+  isClone: 0
 --- !u!1001 &2035335668
 Prefab:
   m_ObjectHideFlags: 0
